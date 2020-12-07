@@ -38,49 +38,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   
-    <script>
-      var dateTime; 
-      const hourBlocks = 8;
+    <script> 
+      const hourBlocks = 9;
       calContainer = $('.container');
       let hourDiv = '';
-      console.log(dateTime);
 
 
 
       var NowMoment = moment();
-      var NowDate = new Date();
 
       console.log(NowMoment);
-      console.log(NowDate);
-      $('#currentDay').text(NowDate);
+      $('#currentDay').text(NowMoment.format('dddd, MMMM D, YYYY'));
   
 
 
 
 
-      $('#currentDay').text(dateTime);
 
 
-generateCalendar(calContainer);
-listenForEvents();
-setToStorage();
+      generateCalendar(calContainer);
 
-function generateCalendar(calContainer) {
-    console.log('generating calendar');
-    for(var i = 0; i < hourBlocks; i++) {
-        var hourDiv = $("<div>").addClass("hour").appendTo(calContainer);
-        $('<span>').text('schedule goes here').appendTo(hourDiv);
-        $('<button>').text('Click to save').appendTo(hourDiv);
+      function generateCalendar(calContainer) {
+          console.log('generating calendar');
+          for(var i = 0; i < hourBlocks; i++) {
+              var hourDiv = $("<div>").addClass("hour").appendTo(calContainer);
+              $('<h5>').text(9 + i + ':00').appendTo(hourDiv);
+              $('<input>').addClass('timeSlot').attr('id', 9 + i).appendTo(hourDiv);
+              $('<button>').text('Click to save').addClass('saveButton').appendTo(hourDiv);
+            }
       }
-}
 
-function listenForEvents () {
-    console.log('listening for events');
-}
-
-function setToStorage () {
-    console.log('setting to local storage');
-}
+      $('.saveButton').click(function setToStorage(Event) {
+        console.log(Event.target);
+        console.log('setting' + Event.target.classList + 'to local storage');
+      });
     </script>
 
   </body>
