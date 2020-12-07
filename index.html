@@ -42,6 +42,8 @@
       const hourBlocks = 9;
       calContainer = $('.container');
       let hourDiv = '';
+      var scheduleInput = '';
+      var scheduleArr = []
 
 
 
@@ -61,16 +63,19 @@
       function generateCalendar(calContainer) {
           console.log('generating calendar');
           for(var i = 0; i < hourBlocks; i++) {
-              var hourDiv = $("<div>").addClass("hour").appendTo(calContainer);
+              hourDiv = $("<div>").addClass("hour").attr('id', 9 + i).appendTo(calContainer);
               $('<h5>').text(9 + i + ':00').appendTo(hourDiv);
-              $('<input>').addClass('timeSlot').attr('id', 9 + i).appendTo(hourDiv);
-              $('<button>').text('Click to save').addClass('saveButton').appendTo(hourDiv);
+              scheduleInput = $('<input>').addClass('timeSlot' + (9 + i)).appendTo(hourDiv);
+              $('<button>').text('Click to save').addClass('saveButton').attr('value', 9 + i).appendTo(hourDiv);
             }
       }
 
-      $('.saveButton').click(function setToStorage(Event) {
-        console.log(Event.target);
-        console.log('setting' + Event.target.classList + 'to local storage');
+      $('.saveButton').click(function () {
+        value = $(this).val();
+        source = $('.timeSlot' + value).val();
+        localStorage.setItem(JSON.stringify(value), JSON.stringify(source));
+        
+        
       });
     </script>
 
