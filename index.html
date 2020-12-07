@@ -33,14 +33,32 @@
     </div>
 
     
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   
     <script>
+      var dateTime; 
       const hourBlocks = 8;
       calContainer = $('.container');
       let hourDiv = '';
+      console.log(dateTime);
+
+
+
+      var NowMoment = moment();
+      var NowDate = new Date();
+
+      console.log(NowMoment);
+      console.log(NowDate);
+      $('#currentDay').text(NowDate);
+  
+
+
+
+
+      $('#currentDay').text(dateTime);
 
 
 generateCalendar(calContainer);
@@ -52,6 +70,7 @@ function generateCalendar(calContainer) {
     for(var i = 0; i < hourBlocks; i++) {
         var hourDiv = $("<div>").addClass("hour").appendTo(calContainer);
         $('<span>').text('schedule goes here').appendTo(hourDiv);
+        $('<button>').text('Click to save').appendTo(hourDiv);
       }
 }
 
@@ -66,3 +85,19 @@ function setToStorage () {
 
   </body>
 </html>
+
+<!--
+  create some rows
+  create some buttons
+  add evenlisteners
+  get relevant html elements
+  get current time
+  display current date
+  store/get scheduled notes from local storage
+
+  function renderRows () {
+    getcurrenttime()
+    getstorednotes()
+    renderrowswcolorsandnotes()
+  } 
+-->
