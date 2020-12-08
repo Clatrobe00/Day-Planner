@@ -50,10 +50,10 @@
 
       function generateCalendar(calContainer) {
           for(var i = 0; i < hourBlocks; i++) {
-              hourDiv = $("<div>").addClass("row").attr('id', 9 + i).appendTo(calContainer);
-              $('<div>').text(9 + i + ':00').addClass('hour').appendTo(hourDiv);
-              $('<textarea>').addClass('textarea').addClass('time-block').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
-              $('<button>').text('Click to save').addClass('saveBtn').attr('value', 9 + i).appendTo(hourDiv);
+              hourDiv = $("<div>").addClass("row").addClass('time-block').attr('id', 9 + i).appendTo(calContainer);
+              $('<div>').text(9 + i + ':00').addClass('hour').addClass('col-1').appendTo(hourDiv);
+              $('<textarea>').addClass('textarea').addClass('col-10').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
+              $('<button>').text('Click to save').addClass('saveBtn').addClass('col-1').attr('value', 9 + i).appendTo(hourDiv);
               
             }
       }
