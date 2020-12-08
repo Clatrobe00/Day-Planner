@@ -60,10 +60,9 @@
 
       function generateCalendar(calContainer) {
           for(var i = 0; i < hourBlocks; i++) {
-              hourDiv = $("<div>").addClass("hour").attr('id', 9 + i).appendTo(calContainer);
-              $('<h5>').text(9 + i + ':00').appendTo(hourDiv);
-              $('<div>').addClass('textarea').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
-              scheduleInput = $('<input>').addClass('userInput' + (9 + i)).appendTo(hourDiv);
+              hourDiv = $("<div>").addClass("row").attr('id', 9 + i).appendTo(calContainer);
+              $('<div>').text(9 + i + ':00').addClass('hour').appendTo(hourDiv);
+              $('<textarea>').addClass('textarea').addClass('time-block').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
               $('<button>').text('Click to save').addClass('saveBtn').attr('value', 9 + i).appendTo(hourDiv);
               
             }
@@ -71,7 +70,7 @@
 
       $('.saveBtn').click(function () {
         value = $(this).val();
-        source = $('.userInput' + value).val();
+        source = $('.textarea' + value).val();
         window.localStorage.setItem(value, JSON.stringify(source));
         
       });
@@ -89,11 +88,11 @@
         for (let i = 0; i < hourBlocks; i++) {
           let timeSlot = parseInt($(`#${9 + i}`).attr('id'));
           if (timeSlot > currentHour) {
-            $(`#${9 + i}`).addClass('red');
+            $(`#${9 + i}`).addClass('future');
           } else if (timeSlot < currentHour) {
-            $(`#${9 + i}`).addClass('blue');
+            $(`#${9 + i}`).addClass('past');
           } else {
-            $(`#${9 + i}`).addClass('white');
+            $(`#${9 + i}`).addClass('present');
           }
         }
       }

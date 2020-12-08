@@ -33,7 +33,7 @@ GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar YES
 WHEN I scroll down
-THEN I am presented with time blocks for standard business hours
+THEN I am presented with time blocks for standard business hours YES
 WHEN I view the time blocks for that day
 THEN each time block is color-coded to indicate whether it is in the past, present, or future
 WHEN I click into a time block
