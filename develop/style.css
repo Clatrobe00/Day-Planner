@@ -72,9 +72,12 @@ textarea{
 
 .red {
   background-color: red;
-  color: red;
 }
 
 .blue {
   background-color: blue;
+}
+
+.white {
+  background-color: white;
 }

@@ -90,6 +90,10 @@
           let timeSlot = parseInt($(`#${9 + i}`).attr('id'));
           if (timeSlot > currentHour) {
             $(`#${9 + i}`).addClass('red');
+          } else if (timeSlot < currentHour) {
+            $(`#${9 + i}`).addClass('blue');
+          } else {
+            $(`#${9 + i}`).addClass('white');
           }
         }
       }
