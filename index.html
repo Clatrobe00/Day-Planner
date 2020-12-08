@@ -67,14 +67,14 @@
               $('<h5>').text(9 + i + ':00').appendTo(hourDiv);
               scheduleInput = $('<input>').addClass('textarea' + (9 + i)).appendTo(hourDiv);
               $('<button>').text('Click to save').addClass('saveBtn').attr('value', 9 + i).appendTo(hourDiv);
-              console.log(localStorage.getItem('9'));
+              console.log(JSON.parse((window.localStorage.getItem(`${9 + i}`))));
             }
       }
 
       $('.saveBtn').click(function () {
         value = $(this).val();
         source = $('.textarea' + value).val();
-        localStorage.setItem(JSON.stringify(value), JSON.stringify(source));
+        window.localStorage.setItem(value, JSON.stringify(source));
 
         
       });
