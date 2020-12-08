@@ -47,22 +47,30 @@
   
       generateCalendar(calContainer);
       checkTime();
+      formatClock();
 
       function generateCalendar(calContainer) {
           for(var i = 0; i < hourBlocks; i++) {
               hourDiv = $("<div>").addClass("row").addClass('time-block').attr('id', 9 + i).appendTo(calContainer);
-              $('<div>').text(9 + i + ':00').addClass('hour').addClass('col-1').appendTo(hourDiv);
+              $('<div>').text(9 + i + ':00').addClass('hour hour' + (9 + i)).addClass('col-1').attr('value', (9 + i)).appendTo(hourDiv);
               $('<textarea>').addClass('textarea').addClass('col-10').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
               $('<button>').text('Click to save').addClass('saveBtn').addClass('col-1').attr('value', 9 + i).appendTo(hourDiv);
-              
-            }
-      }
+              }}
+
+      function formatClock() {
+        for (let i = 0; i < hourBlocks; i++) {
+          let checkVal = parseInt($('.hour' + (9 + i)).attr('value')); // trying to figure out how to make a twelve hour clock//
+          if (checkVal > 12) {
+            $('.hour' + (9 + i)).text((9 + i - 12 + ':00'));
+          }
+          
+        }
+      }        
 
       $('.saveBtn').click(function () {
         value = $(this).val();
         source = $('.textarea' + value).val();
-        window.localStorage.setItem(value, JSON.stringify(source));
-        
+        window.localStorage.setItem(value, JSON.stringify(source)); 
       });
 
       function checkTime() {
