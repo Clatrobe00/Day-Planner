@@ -62,8 +62,10 @@
           let checkVal = parseInt($('.hour' + (9 + i)).attr('value'));
           if (checkVal > 12) {
             $('.hour' + (9 + i)).text((9 + i - 12) + ':00 pm');
-          } else {
+          } else if (checkVal < 12) {
             $('.hour' + (9 + i)).text((9 + i) + ':00 am')
+          } else if (checkVal === 12) {
+            $('.hour' + (9 + i)).text((9 + i) + ':00 pm')
           }
           
         }
