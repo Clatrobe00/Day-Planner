@@ -44,12 +44,9 @@
       let hourDiv = '';
       var scheduleInput = '';
       var scheduleArr = []
-
-
-
+      var currentHour = moment().hours();
       var NowMoment = moment();
 
-      console.log(NowMoment);
       $('#currentDay').text(NowMoment.format('dddd, MMMM D, YYYY'));
   
 
@@ -59,25 +56,45 @@
 
 
       generateCalendar(calContainer);
+      checkTime();
 
       function generateCalendar(calContainer) {
-          console.log('generating calendar');
           for(var i = 0; i < hourBlocks; i++) {
               hourDiv = $("<div>").addClass("hour").attr('id', 9 + i).appendTo(calContainer);
               $('<h5>').text(9 + i + ':00').appendTo(hourDiv);
-              scheduleInput = $('<input>').addClass('textarea' + (9 + i)).appendTo(hourDiv);
+              $('<div>').addClass('textarea').addClass('textarea' + (9 + i)).text(JSON.parse((window.localStorage.getItem(`${9 + i}`)))).appendTo(hourDiv);
+              scheduleInput = $('<input>').addClass('userInput' + (9 + i)).appendTo(hourDiv);
               $('<button>').text('Click to save').addClass('saveBtn').attr('value', 9 + i).appendTo(hourDiv);
-              console.log(JSON.parse((window.localStorage.getItem(`${9 + i}`))));
+              
             }
       }
 
       $('.saveBtn').click(function () {
         value = $(this).val();
-        source = $('.textarea' + value).val();
+        source = $('.userInput' + value).val();
         window.localStorage.setItem(value, JSON.stringify(source));
-
         
       });
+
+
+
+
+
+
+
+
+
+
+      function checkTime() {
+        for (let i = 0; i < hourBlocks; i++) {
+          let timeSlot = parseInt($(`#${9 + i}`).attr('id'));
+          if (timeSlot > currentHour) {
+            $(`#${9 + i}`).addClass('red');
+          }
+        }
+      }
+
+
 
       
     </script>
