@@ -31,6 +31,11 @@
     <div class="container">
       <!-- Timeblocks go here -->
     </div>
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-success clockToggleBtn">Click for 12 Hour Clock</button>
+      </div>
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -42,13 +47,12 @@
       let hourDiv = '';
       var currentHour = moment().hours();
       var NowMoment = moment();
-      clockToggle = $('#clockToggle');
+      let clickCount = 0;
 
       $('#currentDay').text(NowMoment.format('dddd, MMMM D, YYYY'));
 
       generateCalendar(calContainer);
       checkTime();
-      formatClock();
 
       function generateCalendar(calContainer) {
           for(var i = 9; i < hourBlocks; i++) {
@@ -58,7 +62,7 @@
               $('<button>').text('Click to save').addClass('saveBtn col-1').attr('value', i).appendTo(hourDiv);
               }}
 
-      function formatClock() {
+      function format12Clock() {
         for (let i = 9; i < hourBlocks; i++) {
           let checkVal = parseInt($('.hour' + i).attr('value'));
           if (checkVal > 12) {
@@ -70,6 +74,7 @@
           }
           
         }
+        $('.clockToggleBtn').text('Click for 24 Hour Clock')
       }        
 
       $('.saveBtn').click(function () {
@@ -90,6 +95,24 @@
           }
         }
       }
+
+      function format24Clock() {
+        for (let i = 9; i < hourBlocks; i++) {
+            $('.hour' + i).text((i) + ':00');
+        }
+        $('.clockToggleBtn').text('Click for 12 Hour Clock')
+      }       
+
+      $('.clockToggleBtn').click(function () {
+        clickCount += 1
+        console.log(clickCount);
+        console.log(clickCount % 2 ===0);
+        if (clickCount % 2 !== 0) {
+          format12Clock();
+        } else if (clickCount % 2 === 0) {
+            format24Clock();
+        }
+      })
 
     </script>
 
