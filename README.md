@@ -11,7 +11,7 @@ The hour blocks are color coded based on the time of day - past items are grey, 
 
 ![Image of scheduled items](assets/ScheduleColorChange.png)
 
-Additionally, this application has functionality to toggle between and 12 and 24 hour clock- accessed by clicking the button at the bottom left of the page. The button is dynamic and will change based on which format is displayed.
+Additionally, this application has functionality to toggle between a 12 and 24 hour clock- accessed by clicking the button at the bottom left of the page. The button is dynamic and will change based on which format is displayed.
 
 ![Image of scheduled items](assets/clockToggleBtn.png)
 ![Image of scheduled items](assets/clockToggleBtn24.png)
