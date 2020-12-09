@@ -3,4 +3,15 @@ An application that allows the user to save events for each hour of the day. Bui
 
 This application is now live and deployed at: https://clatrobe00.github.io/Day-Planner/
 
-This application allows the user to save events to 1 hour time blocks throughout the business day. 
+This application allows the user to save events to 1 hour time blocks throughout the business day. The text for each hour is saved to localStorgae.
+
+![Image of scheduled items](assets/ScheduledItems.png)
+
+The hour blocks are color coded based on the time of day - past items are grey, the present hour block red, and future blocks are green.
+
+![Image of scheduled items](assets/ScheduleColorChange.png)
+
+Additionally, this application has functionality to toggle between and 12 and 24 hour clock- accessed by clicking the button at the bottom left of the page. The button is dynamic and will change based on which format is displayed.
+
+![Image of scheduled items](assets/clockToggleBtn.png)
+![Image of scheduled items](assets/clockToggleBtn24.png)
